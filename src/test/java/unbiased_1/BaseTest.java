@@ -9,18 +9,16 @@ import org.junit.Before;
 abstract public class BaseTest {
     public void setup() {
         WebDriverManager.chromedriver().setup();
-        Configuration.browser = "chrome";
-        Configuration.driverManagerEnabled = true;
         Configuration.browserSize = "1920x1080";
-        Configuration.headless = false; // настройка для jenkins 'true', потому что нет монитора и браузера, всё виртуально
+        //Configuration.headless = false;
     }
 
     @Before
-    public void init() {
+    public void initBase() {
         setup();
     }
 
-    @After
+        @After
     public void tearDown() {
         Selenide.closeWebDriver();
     }
