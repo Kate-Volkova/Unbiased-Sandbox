@@ -1,5 +1,3 @@
-// Directory Search Page where we select filters
-
 package unbiased_1.page;
 
 import com.codeborne.selenide.*;
