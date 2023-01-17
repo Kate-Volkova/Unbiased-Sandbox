@@ -6,6 +6,7 @@ import unbiased_1.page.AdvisersServiceFinancialAdviserPage;
 import unbiased_1.page.FinancialAdviserPage;
 import unbiased_1.page.MainPage;
 
+import static com.codeborne.selenide.Selenide.$x;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FindAdviserDirectorySearchTest extends BaseTest {
@@ -23,16 +24,16 @@ public class FindAdviserDirectorySearchTest extends BaseTest {
 
         financialAdviserPage.clickBrowseAdviserDirectoryLink();
 
-        advisersServiceFinancialAdviserPage.selectAdviseArea();
-        advisersServiceFinancialAdviserPage.selectIncome();
-        advisersServiceFinancialAdviserPage.setPostcodeValue();
+        advisersServiceFinancialAdviserPage.selectAdviseArea($x("//div[@id=\"list-item-160-1\"]"));
+        advisersServiceFinancialAdviserPage.selectIncome($x("//div[@id=\"list-item-217-6\"]"));
+        advisersServiceFinancialAdviserPage.setPostcodeValue("SE207AA");
         advisersServiceFinancialAdviserPage.submitRequest();
 
         checkResults.checkIfVisible();
         int result = checkResults.countResults();
         assertEquals(20, result);
 
-        boolean trueFalse = checkResults.findParticularAdviserInSearchResults();
+        boolean trueFalse = checkResults.findParticularAdviserInSearchResults("The Private Office");
         Assertions.assertTrue(trueFalse);
 
     }
