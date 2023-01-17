@@ -32,14 +32,14 @@ public class AdvisersServiceFinancialAdviserPage {
     }
 
     public boolean findParticularAdviserInSearchResults(String adviserName) {
-        boolean trueFalse = false;
+        boolean isAdviserExist = false;
         for (SelenideElement adviser : financialPlanningAdvisersResultsList) {
             String name = adviser.getText();
             if (name.equalsIgnoreCase(adviserName)) {
-                trueFalse = true;
+                isAdviserExist = true;
                 break;
             }
         }
-        return trueFalse;
+        return isAdviserExist;
     }
 }

@@ -33,8 +33,8 @@ public class FindAdviserDirectorySearchTest extends BaseTest {
         int result = checkResults.countResults();
         assertEquals(20, result);
 
-        boolean trueFalse = checkResults.findParticularAdviserInSearchResults("The Private Office");
-        Assertions.assertTrue(trueFalse);
+        boolean isAdviserExist = checkResults.findParticularAdviserInSearchResults("The Private Office");
+        Assertions.assertTrue(isAdviserExist);
 
     }
 }
