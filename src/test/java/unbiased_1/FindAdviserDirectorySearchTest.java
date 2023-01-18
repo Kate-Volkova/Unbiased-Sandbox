@@ -5,8 +5,6 @@ import org.junit.jupiter.api.Assertions;
 import unbiased_1.page.AdvisersServiceFinancialAdviserPage;
 import unbiased_1.page.FinancialAdviserPage;
 import unbiased_1.page.MainPage;
-
-import static com.codeborne.selenide.Selenide.$x;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FindAdviserDirectorySearchTest extends BaseTest {
@@ -24,8 +22,8 @@ public class FindAdviserDirectorySearchTest extends BaseTest {
 
         financialAdviserPage.clickBrowseAdviserDirectoryLink();
 
-        advisersServiceFinancialAdviserPage.selectAdviseArea($x("//div[@id=\"list-item-160-1\"]"));
-        advisersServiceFinancialAdviserPage.selectIncome($x("//div[@id=\"list-item-217-6\"]"));
+        advisersServiceFinancialAdviserPage.selectDropDownMenuItem("list-44","Financial planning");
+        advisersServiceFinancialAdviserPage.selectDropDownMenuItem("list-54","£501,000+");
         advisersServiceFinancialAdviserPage.setPostcodeValue("SE207AA");
         advisersServiceFinancialAdviserPage.submitRequest();
 

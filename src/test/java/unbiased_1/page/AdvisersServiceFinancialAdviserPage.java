@@ -1,31 +1,26 @@
 package unbiased_1.page;
 
 import com.codeborne.selenide.*;
-
+import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class AdvisersServiceFinancialAdviserPage {
-    private final SelenideElement postcodeTextField = $x("//input[@id=\"filter-select-postcode\"]");
-    private final SelenideElement submitButton = $x("//button[@id=\"filter-submit-button\"]");
-    private final SelenideElement visibleElement = $(byText("Show only advisers available for contact"));
     private final ElementsCollection financialPlanningAdvisersResultsList = $$x("//h2");
 
-    public void selectAdviseArea(SelenideElement adviseOnItemFinancialPlanning) {
-        adviseOnItemFinancialPlanning.shouldBe(Condition.visible);
-        adviseOnItemFinancialPlanning.click();
+    public void selectDropDownMenuItem(String dropDownMenu, String itemName) {
+        $(byId(dropDownMenu)).shouldBe(Condition.visible).find(byText(itemName)).click();
     }
 
-    public void selectIncome(SelenideElement assertItem501000) {
-        assertItem501000.shouldBe(Condition.visible);
-        assertItem501000.click();
+    public void setPostcodeValue(String postcodeValue) {
+        $x("//input[@id=\"filter-select-postcode\"]").val(postcodeValue);
     }
 
-    public void setPostcodeValue(String postcodeValue) { postcodeTextField.val(postcodeValue); }
+    public void submitRequest() { $x("//button[@id=\"filter-submit-button\"]").click(); }
 
-    public void submitRequest() { submitButton.click(); }
-
-    public void checkIfVisible () {visibleElement.shouldBe(Condition.visible);}
+    public void checkIfVisible () {
+        $(byText("Show only advisers available for contact")).shouldBe(Condition.visible);
+    }
 
     public int countResults() {
         return financialPlanningAdvisersResultsList.size();
